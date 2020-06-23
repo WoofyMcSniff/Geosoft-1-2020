@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+  <link rel="stylesheet" type="text/css" href="design.css">
+  <meta charset="utf-8">
+  <meta name="description" content="Geosoftware 1 Excercises">
+  <meta name="keywords" content="JScript, leaflet map, GeoJSON, Geocoding">
+  <meta name="author" content="Malte Tiemann">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Geosoftware 1 - Excercise 4</title>
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
+  <!-- Leaflet -->
+  <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+  <!-- Leaflet-Control-Geocoder CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+  <!-- Leaflet-Control-Geocoder -->
+  <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+
+  <!-- Leaflet Draw CSS -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css"/>
+		<!-- Leaflet Draw script -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
+</head>
+
+<h1> Welcome to the leafletdraw Map for Excercise 4 of Geosoftware 1</h1>
+
+<!-- Container for the drawmap-->
+<div id="drawmap"></div>
+
+<div id="sideMap">
+  <button class="button" type="button" onclick="exportGeoJSON()">Gezeichnetes Feature abzeigen</button>
+  <button class="button" type="button" onclick="window.location.href='index.html'">Zurück zum Index</button>
+
+</div>
+  <div>
+    <br>
+    <p> Hier wird das GeoJSON ihres Draw Features angezeigt:
+    <p>
+  <textarea cols="150" rows="20" id="drawGeoJSON"></textarea><br>
+
+</div>
+<script src="leafletdraw.js"></script>
+</body>
+
+</html>
