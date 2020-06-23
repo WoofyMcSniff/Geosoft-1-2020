@@ -2,7 +2,7 @@
 <html lang="de">
 
 <head>
-  <link rel="stylesheet" type="text/css" href="design.css">
+  <link rel="stylesheet" type="text/css" href="css/design.css">
   <meta charset="utf-8">
   <meta name="description" content="Geosoftware 1 Excercises">
   <meta name="keywords" content="JScript, leaflet map, GeoJSON, Geocoding">
@@ -21,28 +21,67 @@
 
   <!-- Leaflet Draw CSS -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw-src.css"/>
-		<!-- Leaflet Draw script -->
+	<!-- Leaflet Draw script -->
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.draw/1.0.4/leaflet.draw.js"></script>
-</head>
 
-<h1> Welcome to the leafletdraw Map for Excercise 4 of Geosoftware 1</h1>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+<!-- Grey with black text -->
+<nav class="navbar navbar-expand-sm bg-light navbar-light">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+  <span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+  <ul class="navbar-nav">
+    <li class="nav-item">
+      <a class="nav-link" href="../index.html">Home</a>
+    </li>
+    <li class="nav-item active">
+      <a class="nav-link" href="leafletdraw.html">Leaflet Draw</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="impressum.html">Impressum</a>
+    </li>
+  </ul>
+</div>
+</nav>
+
+
+<h1> Leaflet Draw Map</h1>
 
 <!-- Container for the drawmap-->
-<div id="drawmap"></div>
-
-<div id="sideMap">
-  <button class="button" type="button" onclick="exportGeoJSON()">Gezeichnetes Feature abzeigen</button>
-  <button class="button" type="button" onclick="window.location.href='index.html'">Zurück zum Index</button>
-
+<div id="drawmap">
 </div>
+
+
+  <button class="btn btn-primary" type="button" onclick="exportGeoJSON()">Gezeichnetes Feature anzeigen</button>
+
+
   <div>
     <br>
     <p> Hier wird das GeoJSON ihres Draw Features angezeigt:
     <p>
-  <textarea cols="150" rows="20" id="drawGeoJSON"></textarea><br>
+      <div class="form-group">
+  <textarea class="form-control" id="drawGeoJSON" rows="3"></textarea>
+</div>
+
 
 </div>
-<script src="leafletdraw.js"></script>
+
+<footer class="footer">
+  <div class="container">
+    <a class="nav-link" href="impressum.html">Impressum</a>
+  </div>
+</footer>
+
+<script src="../script/leafletdraw.js"></script>
 </body>
 
 </html>

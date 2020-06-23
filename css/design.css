@@ -33,14 +33,13 @@ table, th, td {
 #drawmap {
   float: left;
   height: 600px;
-  width: 89%;
+  width: 100%;
   border-style: solid;
 }
 
-#sideMap {
-  background: #ccc;
-  border-style: solid;
-  float: right;
-  width: 10%;
-  height: 600px;
+.divcontainer {
+  width:100%;
+  margin-right: auto;
+  margin-left: auto;
+  opacity: 0.9;
 }

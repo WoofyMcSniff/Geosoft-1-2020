@@ -231,7 +231,15 @@ function Haltestelle(name, distance, direction, coords) {
   this.direction = direction;
   this.coords = coords;
 }
+/**
+ * @function HeatStop
+ * @desc Constructor for creating an new object 'Haltestelle'
+ */
 
+function HeatStop(long, lat) {
+  this.long = long;
+  this.lat = lat;
+}
 
 /*
 function Abfahrt (abfahrtzeit) {
@@ -255,7 +263,7 @@ function sortHaltestellen(Haltestellen) {
  */
 
 var HaltestellenIcon = L.icon({
-  iconUrl: 'stop.png',
+  iconUrl: 'images/stop.png',
 
   iconSize: [10, 10], // size of the icon
   iconAnchor: [0, 0], // point of the icon which will correspond to marker's location
@@ -293,12 +301,16 @@ async function getHaltestellen() {
 
   for (var i = 0; i < Haltestellen.length; i++) {
     //console.log(Haltestellen[i].coords);
+
+
     marker = new L.marker([Haltestellen[i].coords[1], Haltestellen[i].coords[0]], {
       icon: HaltestellenIcon
     }).addTo(map);
     marker.bindPopup("Haltestelle: " + Haltestellen[i].name + "<br> Distanz von Ihrer Position: " + Haltestellen[i].distance + "m <br> Richtung: " + Haltestellen[i].direction)
 
   }
+
+  console.log(Haltestellen);
 
   // creating a table consisting of name, distance and direction of the next 5 Haltestellen
   var rows = 1, // 3 cells per row
@@ -321,6 +333,45 @@ async function getHaltestellen() {
   // connecting the table to the corresponding container
   document.getElementById("closest_Haltestellen").innerHTML = table;
 
+
+}
+
+// function to display a heatmap of Haltestellen after getting the location of the user
+async function showHeatmap() {
+  const haltestellen_url = 'https://rest.busradar.conterra.de/prod/haltestellen/';
+  const response = await fetch(haltestellen_url);
+  const data = await response.json();
+  var currentPosition = current.outJSON.features[0].geometry.coordinates;
+  var Haltestellen = new Array();
+  var HeatStops = new Array();
+console.log(data);
+console.log(data.features[0].geometry.coordinates[0]);
+console.log(data.features[0].geometry.coordinates[1]);
+  for (let i = 0; i < data.features.length; i++) {
+
+    Haltestellen[i] = new Haltestelle(
+      data.features[i].properties.lbez,
+      twoPointDistance(currentPosition, data.features[i].geometry.coordinates),
+      bearingToCardinalDirection(computeBearing(currentPosition, data.features[i].geometry.coordinates)),
+      data.features[i].geometry.coordinates
+    );
+
+    sortHaltestellen(Haltestellen);
+
+  }
+//filling a new array with only lat long values of the haltestellen data gathered beforehand
+  for (let i = 0; i < data.features.length; i++) {
+
+    HeatStops[i] = new HeatStop(
+      data.features[i].geometry.coordinates[0],
+      data.features[i].geometry.coordinates[1]
+    );
+
+  }
+  console.log(HeatStops);
+
+  // throws a leaflet Error: Invalid LatLng object: (51.9574469, undefined) ???? Array is only filled with lat and long values
+    var heat = L.heatLayer(HeatStops).addTo(map);
 
 }
 
